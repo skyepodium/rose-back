@@ -18,7 +18,8 @@ def login(request):
         if user == None:
             return JsonResponse({'result': False})
         else:
-            return JsonResponse({'result': True})
+            username = email.split('@')[0] 
+            return JsonResponse({'result': True, 'id': username})
 
 def register(request):
     if request.method == 'POST':
@@ -37,6 +38,6 @@ def register(request):
             username = email.split('@')[0] 
             user = User(email = email, password = password, username = username)
             user.save()
-            return JsonResponse({'result': True})            
+            return JsonResponse({'result': True, 'id': username})            
         else:
             return JsonResponse({'result': False})

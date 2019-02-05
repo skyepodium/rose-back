@@ -16,9 +16,12 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from user.views import login, register
+from post.views import postSave, postGet
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/login', login, name="login"),
     path('api/register', register, name="register"),
+    path('api/postSave', postSave, name="postSave"),
+    path('api/postGet', postGet, name="postGet")
 ]
